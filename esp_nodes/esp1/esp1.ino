@@ -5,17 +5,16 @@
 
 #define DEVICE_ID 1
 
-const char* ssid = "SENORITA";
-const char* password = "mohit2402";
-const char* serverUrl = "http://10.181.196.173:5000/endpoint";
+#include "secrets.h"   // WIFI_SSID, WIFI_PASSWORD, SERVER_URL - copy secrets.example.h
 
 typedef struct {
   unsigned frame_ctrl:16;
   unsigned duration_id:16;
-  uint8_t addr2[6];
+  uint8_t addr1[6];
+  uint8_t addr2[6];          // transmitter address - the device we are locating
   uint8_t addr3[6];
   unsigned seq_ctrl:16;
-} wifi_ieee80211_mac_hdr_t;
+} __attribute__((packed)) wifi_ieee80211_mac_hdr_t;
 
 struct PacketData {
   char mac[18];
@@ -38,7 +37,7 @@ void sendToBackend(const char* mac, int rssi) {
   delay(50);
 
   HTTPClient http;
-  http.begin(serverUrl);
+  http.begin(SERVER_URL);
   http.addHeader("Content-Type", "application/json");
 
   StaticJsonDocument<256> doc;
@@ -91,7 +90,7 @@ void setup() {
   Serial.begin(115200);
 
   WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
   Serial.print("Connecting to WiFi");
   while (WiFi.status() != WL_CONNECTED) {

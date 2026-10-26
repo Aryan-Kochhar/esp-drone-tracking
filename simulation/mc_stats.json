@@ -1,0 +1,24 @@
+{
+ "sigma_db": 4.0,
+ "window": 5,
+ "tx": -40.0,
+ "n": 2.0,
+ "grid_step_m": 0.5,
+ "trials_per_point": 120,
+ "points": 2352,
+ "solves": 282240,
+ "fails": 0,
+ "median_in": 2.8040043687553973,
+ "median_out": 4.841664073397808,
+ "p90_in": 6.567737487068091,
+ "within2_in": 0.3143888888888889,
+ "within2_out": 0.1350884703196347,
+ "mm_n_true": 2.7,
+ "mm_trials_per_point": 40,
+ "mm_median_in": 34.59801257985615,
+ "mm_median_out": 94.11065207402227,
+ "secs": [
+  24.3,
+  8.0
+ ]
+}

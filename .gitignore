@@ -7,3 +7,7 @@ dist/
 build/
 .venv/
 venv/
+
+# device credentials (copy secrets.example.h)
+esp_nodes/*/secrets.h
+~$*.pptx
